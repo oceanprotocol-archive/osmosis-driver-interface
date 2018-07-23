@@ -1,2 +1,2 @@
-# osmosis-driver-interface
+# Osmosis-driver-interface
 A membrane between the decentralized world and centralized world
