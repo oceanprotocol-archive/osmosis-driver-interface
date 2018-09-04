@@ -28,7 +28,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
-    description="🐳 Provider backend.",
+    description="💧 Osmosis driver interface. A membrane between the decentralized world and centralized world.",
     install_requires=requirements,
     license="Apache Software License 2.0",
     long_description=readme,
