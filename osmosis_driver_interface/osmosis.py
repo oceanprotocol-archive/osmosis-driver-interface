@@ -4,7 +4,7 @@ from osmosis_driver_interface.constants import COMPUTING, DATA
 
 class Osmosis:
     """High-level, plugin-bound Osmosis functions.
-    Instantiated with an subclass implementing the ledger plugin
+    Instantiated with a subclass implementing the ledger plugin
     interface (:class:`~.AbstractPlugin`) that will automatically be
     bound to all top-level functions:
         - :attr:`type` (as a read-only property)

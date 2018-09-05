@@ -20,7 +20,7 @@ class AbstractPlugin(ABC):
 
     @abstractmethod
     def create_vm(self, ):
-        """Create a container/instance to compute and algorithm inside.
+        """Create a container/instance to compute an algorithm inside.
          Args:
          Raises:
              :exc:`~..OsmosisError`: the vm could not be created with this arguments.
@@ -52,7 +52,7 @@ class AbstractPlugin(ABC):
              instance_name(str): The container/instance name
              command(str): The command that you want to run inside the container/instance
         Raises:
-             :exc:`~..OsmosisError`: if the container/instance does not exists or if you do not have permissions to run
+             :exc:`~..OsmosisError`: if the container/instance does not exist or if you do not have permissions to run
              this command
         """
 
@@ -62,7 +62,7 @@ class AbstractPlugin(ABC):
         Args:
              instance_name(str): The container/instance name
         Raises:
-             :exc:`~..OsmosisError`: if the container/instance does not exists.
+             :exc:`~..OsmosisError`: if the container/instance does not exist.
         """
 
     @abstractmethod
