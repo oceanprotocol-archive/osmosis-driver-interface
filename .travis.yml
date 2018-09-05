@@ -9,9 +9,8 @@ script: tox
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
-  user: leucothia
-  password:
-    secure:
+  user: ${PYPI_USER}
+  password: ${PYPI_PASSWORD}
   on:
     tags: true
     repo: oceanprotocol/osmosis-driver-interface
