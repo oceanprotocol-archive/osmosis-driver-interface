@@ -32,7 +32,7 @@ class AbstractPlugin(ABC):
 
     @abstractmethod
     def download(self, remote_file, local_file):
-        """Download file to a remote resource manager
+        """Download file from a remote resource manager
         Args:
              remote_file(str): The path in the resource manager of the file to download from.
              local_file(str): The path to the file to download to..
@@ -48,7 +48,7 @@ class AbstractPlugin(ABC):
         Returns:
             dict: List with the name of the file of a directory.
         Raises:
-             :exc:`~..OsmosisError`: if the directory does not exists.
+             :exc:`~..OsmosisError`: if the directory does not exist.
         """
 
     @abstractmethod
@@ -57,7 +57,7 @@ class AbstractPlugin(ABC):
         Args:
             remote_file(str): The path in the resource manager of the file to give access.
         Raises:
-             :exc:`~..OsmosisError`: if the file does not exists or if the action could not be done.
+             :exc:`~..OsmosisError`: if the file does not exist or if the action could not be done.
         """
 
     @abstractmethod
@@ -66,7 +66,7 @@ class AbstractPlugin(ABC):
         Args:
              remote_file(str): The path in the resource manager of the file to delete..
         Raises:
-             :exc:`~..OsmosisError`: if the path does not exists or if the action could not be done.
+             :exc:`~..OsmosisError`: if the path does not exist or if the action could not be done.
         """
 
     @abstractmethod

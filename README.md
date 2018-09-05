@@ -21,17 +21,17 @@
 
 ## Code style
 
-The information about code style in python is documented in this two links [python-developer-guide](https://github.com/oceanprotocol/dev-ocean/blob/master/doc/development/python-developer-guide.md)
+The information about code style in python is documented in these two links [python-developer-guide](https://github.com/oceanprotocol/dev-ocean/blob/master/doc/development/python-developer-guide.md)
 and [python-style-guide](https://github.com/oceanprotocol/dev-ocean/blob/master/doc/development/python-style-guide.md).
     
 ## Testing
 
 Automatic tests are setup via Travis, executing `tox`.
-Our test use pytest framework.
+Our tests use the pytest framework.
 
 ## New Version
 
-The `bumpversion.sh` script helps to bump the project version. You can execute the script using as first argument {major|minor|patch} to bump accordingly the version.
+The `bumpversion.sh` script helps to bump the project version. You can execute the script using {major|minor|patch} as first argument to bump the version accordingly.
 
 ## License
 
