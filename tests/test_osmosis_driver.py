@@ -18,6 +18,7 @@ def test_osmosis_expcects_subclassed_plugin():
     with raises(TypeError):
         AbstractPlugin(plugin)
 
+
 def test_parse_config():
     config = parse_config('./tests/osmosis.ini')
     assert config['module'] == 'azure'

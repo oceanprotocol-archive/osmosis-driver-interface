@@ -57,12 +57,12 @@ def load_plugin(_type, config=None):
         from importlib.machinery import SourceFileLoader
 
         mod = SourceFileLoader("%s_plugin.py" % _type, module_path).load_module()
-        return mod.Plugin
+        return mod.Plugin(config)
     else:
         spec = importlib.util.spec_from_file_location("%s_plugin.py" % _type, module_path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        return mod.Plugin
+        return mod.Plugin(config)
 
 
 def get_value(value, env_var, default, config=None):
