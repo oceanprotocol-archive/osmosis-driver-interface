@@ -16,7 +16,7 @@ pyflakes==1.6.0
 pytest==3.4.2
 pytest-runner==2.11.1
 PyYAML==3.13
-requests==2.19.1
+requests==2.20.1
 requests-toolbelt==0.8.0
 singletonify==0.1.2.0
 six==1.11.0
