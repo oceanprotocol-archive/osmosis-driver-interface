@@ -13,7 +13,10 @@ with open('HISTORY.md') as history_file:
 
 # Installed by pip install osmosis-driver-interface
 # or pip install -e .
-install_requirements = []
+install_requirements = [
+    'coloredlogs',
+    'PyYAML>=4.2b1',
+]
 
 # Required to run setup.py:
 setup_requirements = ['pytest-runner', ]
