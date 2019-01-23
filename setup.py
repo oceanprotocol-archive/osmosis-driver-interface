@@ -15,7 +15,7 @@ with open('HISTORY.md') as history_file:
 # or pip install -e .
 install_requirements = [
     # Install squid-py and all its dependencies first
-    'osmosis-on-premise-driver==0.0.4',
+    'osmosis-on-premise-driver==0.0.5',
 ]
 
 # Required to run setup.py:
@@ -66,6 +66,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/oceanprotocol/osmosis-driver-interface',
-    version='0.0.4',
+    version='0.0.5',
     zip_safe=False,
 )
