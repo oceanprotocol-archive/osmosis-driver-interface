@@ -11,7 +11,7 @@ with open('README.md') as readme_file:
 with open('HISTORY.md') as history_file:
     history = history_file.read()
 
-# Installed by pip install ocean-brizo
+# Installed by pip install osmosis-driver-interface
 # or pip install -e .
 install_requirements = [
     # Install squid-py and all its dependencies first
@@ -30,7 +30,7 @@ test_requirements = [
     'tox',
 ]
 
-# Possibly required by developers of ocean-brizo:
+# Possibly required by developers of osmosis-driver-interface:
 dev_requirements = [
     'bumpversion',
     'pkginfo',

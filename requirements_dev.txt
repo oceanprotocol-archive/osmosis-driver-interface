@@ -1,9 +1,9 @@
-# pip install ocean-brizo
+# pip install osmosis-driver-interface
 # is for end users. That will install the packages
 # listed in the install_requires list of setup.py.
 
 # pip install -r requirements_dev.txt
-# is for the developers of ocean-brizo, so doing that should
+# is for the developers of osmosis-driver-interface, so doing that should
 # install all the Python packages listed
 # in the install_requires list of setup.py
 # and also the 'dev' list in the extras_require dict
