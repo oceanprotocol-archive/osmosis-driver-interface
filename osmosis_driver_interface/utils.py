@@ -20,9 +20,9 @@ def parse_config(file_path):
         try:
             plugin_config[option] = config_parser.get(CONFIG_OPTION, option)
             if plugin_config[option] == -1:
-                logging.info("skip: %s" % option)
+                logging.info(f'skip: {option}')
         except Exception as e:
-            logging.error("exception on %s!" % option)
+            logging.error(f'exception on {option}')
             logging.error(e.message)
             plugin_config[option] = None
     return plugin_config
@@ -47,10 +47,10 @@ def load_plugin(_type, module='on_premise', config=None):
     if sys.version_info < (3, 5):
         from importlib.machinery import SourceFileLoader
 
-        mod = SourceFileLoader("%s_plugin.py" % _type, module_path).load_module()
+        mod = SourceFileLoader(f'{_type}_plugin.py', module_path).load_module()
         return mod.Plugin(config)
     else:
-        spec = importlib.util.spec_from_file_location("%s_plugin.py" % _type, module_path)
+        spec = importlib.util.spec_from_file_location(f'{_type}_plugin.py', module_path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
         return mod.Plugin(config)
@@ -59,13 +59,12 @@ def load_plugin(_type, module='on_premise', config=None):
 def retrieve_module_path(_type, module, config=None):
     try:
         if config is not None and 'module.path' in config:
-            module_path = "%s/%s_plugin.py" % (config['module.path'], _type)
+            module_path = f'{config["module.path"]}/{_type}_plugin.py'
         elif os.getenv('VIRTUAL_ENV') is not None:
-            module_path = "%s/lib/python3.%s/site-packages/osmosis_%s_driver/%s_plugin.py" % (
-                os.getenv('VIRTUAL_ENV'), sys.version_info[1], module, _type)
+            module_path = f'{os.getenv("VIRTUAL_ENV")}/lib/python3.{sys.version_info[1]}' \
+                          f'/site-packages/osmosis_{module}_driver/{_type}_plugin.py'
         else:
-            module_path = "%s/osmosis_%s_driver/%s_plugin.py" % (
-                site.getsitepackages()[0], module, _type)
+            module_path = f'{site.getsitepackages()[0]}/osmosis_{module}_driver/{_type}_plugin.py'
         return module_path
     except Exception:
         raise ConfigError('You should provide a valid config.')
