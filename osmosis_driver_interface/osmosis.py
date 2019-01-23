@@ -34,14 +34,14 @@ class Osmosis:
         :param url: str
         :return: Module name, str
         """
-        logger.info(f'Parsing url: {url}')
+        logger.info('Parsing url: %s' % url)
         if 'core.windows.net' in url:
-            logger.info(f'It is an azure url.')
+            logger.info('It is an azure url.')
             return 'azure'
         elif 's3://' in url:
-            logger.info(f'It is an aws url.')
+            logger.info('It is an aws url.')
             return 'aws'
         else:
-            logger.info(f'It is a on_premise url.')
+            logger.info('It is a on_premise url.')
             return 'on_premise'
 
