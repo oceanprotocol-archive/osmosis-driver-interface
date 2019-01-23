@@ -13,10 +13,7 @@ with open('HISTORY.md') as history_file:
 
 # Installed by pip install osmosis-driver-interface
 # or pip install -e .
-install_requirements = [
-    # Install squid-py and all its dependencies first
-    'osmosis-on-premise-driver==0.0.4',
-]
+install_requirements = []
 
 # Required to run setup.py:
 setup_requirements = ['pytest-runner', ]
@@ -27,6 +24,7 @@ test_requirements = [
     'pylint',
     'pytest',
     'pytest-watch',
+    'osmosis-on-premise-driver',
     'tox',
 ]
 
@@ -66,6 +64,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/oceanprotocol/osmosis-driver-interface',
-    version='0.0.5',
+    version='0.0.6',
     zip_safe=False,
 )
