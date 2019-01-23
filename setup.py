@@ -15,7 +15,7 @@ with open('HISTORY.md') as history_file:
 # or pip install -e .
 install_requirements = [
     # Install squid-py and all its dependencies first
-    'osmosis-on-premise-driver==0.0.5',
+    'osmosis-on-premise-driver==0.0.4',
 ]
 
 # Required to run setup.py:
