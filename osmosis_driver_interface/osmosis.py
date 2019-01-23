@@ -34,7 +34,7 @@ class Osmosis:
         :param url: str
         :return: Module name, str
         """
-        logger.info('Parsing url: %s' % url)
+        logger.info(f'Parsing url: {url}')
         if 'core.windows.net' in url:
             logger.info('It is an azure url.')
             return 'azure'
