@@ -11,11 +11,32 @@ with open('README.md') as readme_file:
 with open('HISTORY.md') as history_file:
     history = history_file.read()
 
-requirements = []
+# Installed by pip install osmosis-driver-interface
+# or pip install -e .
+install_requirements = [
+    # Install squid-py and all its dependencies first
+    'osmosis-on-premise-driver==0.0.4',
+]
 
+# Required to run setup.py:
 setup_requirements = ['pytest-runner', ]
 
-test_requirements = ['pytest', ]
+test_requirements = [
+    'codacy-coverage',
+    'coverage',
+    'pylint',
+    'pytest',
+    'pytest-watch',
+    'tox',
+]
+
+# Possibly required by developers of osmosis-driver-interface:
+dev_requirements = [
+    'bumpversion',
+    'pkginfo',
+    'twine',
+    'watchdog',
+]
 
 setup(
     author="leucothia",
@@ -29,7 +50,11 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
     description="💧 Osmosis driver interface. A membrane between the decentralized world and centralized world.",
-    install_requires=requirements,
+    extras_require={
+        'test': test_requirements,
+        'dev': dev_requirements + test_requirements,
+    },
+    install_requires=install_requirements,
     license="Apache Software License 2.0",
     long_description=readme,
     long_description_content_type="text/markdown",
