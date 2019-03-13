@@ -1,3 +1,6 @@
+#  Copyright 2018 Ocean Protocol Foundation
+#  SPDX-License-Identifier: Apache-2.0
+
 from abc import ABC, abstractmethod
 
 
@@ -24,7 +27,8 @@ class AbstractPlugin(ABC):
         """Upload file to a remote resource manager
          Args:
              local_file(str): The path of the file to upload.
-             remote_file(str): The path of the resource manager where the file is going to be allocated.
+             remote_file(str): The path of the resource manager where the file is going to be
+             allocated.
          Raises:
              :exc:`~..OsmosisError`: if the file is not uploaded correctly.
 

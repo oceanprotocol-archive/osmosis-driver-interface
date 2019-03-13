@@ -1,5 +1,9 @@
+#  Copyright 2018 Ocean Protocol Foundation
+#  SPDX-License-Identifier: Apache-2.0
+
 import os
 import sys
+
 from osmosis_driver_interface.utils import retrieve_module_path
 
 

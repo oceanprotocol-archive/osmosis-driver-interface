@@ -3,7 +3,10 @@
 
 """The setup script."""
 
-from setuptools import setup, find_packages
+#  Copyright 2018 Ocean Protocol Foundation
+#  SPDX-License-Identifier: Apache-2.0
+
+from setuptools import find_packages, setup
 
 with open('README.md') as readme_file:
     readme = readme_file.read()
@@ -50,7 +53,8 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
-    description="💧 Osmosis driver interface. A membrane between the decentralized world and centralized world.",
+    description="💧 Osmosis driver interface. A membrane between the decentralized world and "
+                "centralized world.",
     extras_require={
         'test': test_requirements,
         'dev': dev_requirements + test_requirements,
