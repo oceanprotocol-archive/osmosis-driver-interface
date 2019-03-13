@@ -1,3 +1,6 @@
+#  Copyright 2018 Ocean Protocol Foundation
+#  SPDX-License-Identifier: Apache-2.0
+
 import configparser
 import importlib.machinery
 import importlib.util
@@ -62,7 +65,7 @@ def retrieve_module_path(_type, module, config=None):
             module_path = f'{config["module.path"]}/{_type}_plugin.py'
         elif os.getenv('VIRTUAL_ENV') is not None:
             module_path = f'{os.getenv("VIRTUAL_ENV")}/lib/python3.{sys.version_info[1]}' \
-                          f'/site-packages/osmosis_{module}_driver/{_type}_plugin.py'
+                f'/site-packages/osmosis_{module}_driver/{_type}_plugin.py'
         else:
             module_path = f'{site.getsitepackages()[0]}/osmosis_{module}_driver/{_type}_plugin.py'
         return module_path

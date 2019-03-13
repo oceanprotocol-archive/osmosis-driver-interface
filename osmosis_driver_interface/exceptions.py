@@ -1,6 +1,9 @@
 """Custom exceptions for Osmosis"""
 
 
+#  Copyright 2018 Ocean Protocol Foundation
+#  SPDX-License-Identifier: Apache-2.0
+
 class OsmosisError(Exception):
     """Base class for all Osmosis errors."""
 

@@ -1,3 +1,6 @@
+#  Copyright 2018 Ocean Protocol Foundation
+#  SPDX-License-Identifier: Apache-2.0
+
 from osmosis_driver_interface.osmosis import Osmosis
 
 
@@ -12,4 +15,3 @@ def test_parse_url_aws():
 
 def test_parse_url_on_premise():
     assert Osmosis.parse_url('http://www.example.com') == 'on_premise'
-

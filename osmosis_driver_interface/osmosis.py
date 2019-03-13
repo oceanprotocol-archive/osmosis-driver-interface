@@ -1,4 +1,8 @@
+#  Copyright 2018 Ocean Protocol Foundation
+#  SPDX-License-Identifier: Apache-2.0
+
 import logging
+
 from osmosis_driver_interface.constants import COMPUTING, DATA
 from osmosis_driver_interface.log import setup_logging
 from osmosis_driver_interface.utils import start_plugin
@@ -44,4 +48,3 @@ class Osmosis:
         else:
             logger.info('It is a on_premise url.')
             return 'on_premise'
-
