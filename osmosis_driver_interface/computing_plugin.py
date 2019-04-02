@@ -1,3 +1,6 @@
+#  Copyright 2018 Ocean Protocol Foundation
+#  SPDX-License-Identifier: Apache-2.0
+
 from abc import ABC, abstractmethod
 
 
@@ -10,6 +13,8 @@ class AbstractPlugin(ABC):
         - :func:`stop_vm`
         - :func:`run_command`
         - :func:`delete_vm`
+        - :func:`status_vm`
+        - :func:`copy`
         - :func:`retrieve_computation_proof`
         - :func:`retrieve_vm_logs`
     """
@@ -52,7 +57,8 @@ class AbstractPlugin(ABC):
              instance_name(str): The container/instance name
              command(str): The command that you want to run inside the container/instance
         Raises:
-             :exc:`~..OsmosisError`: if the container/instance does not exist or if you do not have permissions to run
+             :exc:`~..OsmosisError`: if the container/instance does not exist or if you do not
+             have permissions to run
              this command
         """
 
@@ -61,6 +67,26 @@ class AbstractPlugin(ABC):
         """Delete a container/instance.
         Args:
              instance_name(str): The container/instance name
+        Raises:
+             :exc:`~..OsmosisError`: if the container/instance does not exist.
+        """
+
+    @abstractmethod
+    def status_vm(self, instance_name):
+        """Retrieve the status of the current container/instance.
+        Args:
+             instance_name(str): The container/instance name
+        Raises:
+             :exc:`~..OsmosisError`: if the container/instance does not exist.
+        """
+
+    @abstractmethod
+    def copy(self, instance_name, source_path, dest_path):
+        """Copy a file from/to a container/instance.
+        Args:
+             instance_name(str): The container/instance name
+             source_path(str): The path of the origin file.
+             dest_path(str): The path of the destination.
         Raises:
              :exc:`~..OsmosisError`: if the container/instance does not exist.
         """
