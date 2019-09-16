@@ -16,7 +16,7 @@ def test_osmosis_expects_plugin():
 def test_osmosis_expcects_subclassed_plugin():
     from osmosis_driver_interface.data_plugin import AbstractPlugin
 
-    class NonSubclassPlugin():
+    class NonSubclassPlugin:
         pass
 
     plugin = NonSubclassPlugin()
