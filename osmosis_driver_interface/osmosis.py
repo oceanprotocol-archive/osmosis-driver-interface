@@ -26,9 +26,9 @@ class Osmosis:
         plugin (Plugin): Bound persistence layer plugin.
     """
 
-    def __init__(self, url, file_path=None, ):
-        self.computing_plugin = start_plugin(COMPUTING, self.parse_url(url), file_path)
-        self.data_plugin = start_plugin(DATA, self.parse_url(url), file_path)
+    def __init__(self, url, config_file_path=None, ):
+        self.computing_plugin = start_plugin(COMPUTING, self.parse_url(url), config_file_path)
+        self.data_plugin = start_plugin(DATA, self.parse_url(url), config_file_path)
 
     @staticmethod
     def parse_url(url):

@@ -57,15 +57,15 @@ def parse_config(file_path):
     return plugin_config
 
 
-def start_plugin(_type, module, file_path=None):
+def start_plugin(_type, module, config_file_path=None):
     """This function initialize the Osmosis plugin"""
     if os.getenv('CONFIG_PATH'):
-        file_path = os.getenv('CONFIG_PATH')
+        config_file_path = os.getenv('CONFIG_PATH')
     else:
-        file_path = file_path
+        config_file_path = config_file_path
 
-    if file_path is not None:
-        config = parse_config(file_path)
+    if config_file_path is not None:
+        config = parse_config(config_file_path)
         plugin_instance = load_plugin(_type, module, config)
     else:
         plugin_instance = load_plugin(_type, module)
