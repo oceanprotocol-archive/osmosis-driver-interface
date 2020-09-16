@@ -1,0 +1,5 @@
+{
+    "core.windows.net": "azure",
+    "s3://": "aws",
+    "ipfs://": "ipfs"
+}

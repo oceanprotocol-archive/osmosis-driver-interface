@@ -5,7 +5,7 @@ import logging
 
 from osmosis_driver_interface.constants import COMPUTING, DATA
 from osmosis_driver_interface.log import setup_logging
-from osmosis_driver_interface.utils import start_plugin
+from osmosis_driver_interface.utils import start_plugin, get_plugin_url_map
 
 setup_logging()
 logger = logging.getLogger('Osmosis')
@@ -26,7 +26,7 @@ class Osmosis:
         plugin (Plugin): Bound persistence layer plugin.
     """
 
-    def __init__(self, url, file_path=None):
+    def __init__(self, url, file_path=None, ):
         self.computing_plugin = start_plugin(COMPUTING, self.parse_url(url), file_path)
         self.data_plugin = start_plugin(DATA, self.parse_url(url), file_path)
 
@@ -38,15 +38,17 @@ class Osmosis:
         :param url: str
         :return: Module name, str
         """
-        if 'core.windows.net' in url:
-            logger.info(f'Loading azure driver, url={url}.')
-            return 'azure'
-        elif 's3://' in url:
-            logger.info(f'Loading aws driver, url={url}.')
-            return 'aws'
-        elif 'ipfs://' in url:
-            logger.info(f'Loading IPFS driver, url={url}')
-            return 'ipfs'
-        else:
-            logger.info(f'Loading on_premise driver, url={url}.')
-            return 'on_premise'
+        _plugin_name = 'on_premise'
+        _key = ''
+        plugin_map = get_plugin_url_map()
+        for key, name in plugin_map.items():
+            if key in url:
+                _key = key
+                _plugin_name = name
+                logger.info(f'Loading `{_plugin_name}` driver, url={url}, plugin-key={key}.')
+                break
+
+        if not _key:
+            logger.info(f'Loading `{_plugin_name}` driver, url={url}.')
+
+        return _plugin_name
