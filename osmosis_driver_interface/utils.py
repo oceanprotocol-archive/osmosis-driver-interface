@@ -26,8 +26,9 @@ def parse_config(file_path):
                 logging.info(f'skip: {option}')
         except Exception as e:
             logging.error(f'exception on {option}')
-            logging.error(e.message)
+            logging.error(str(e))
             plugin_config[option] = None
+
     return plugin_config
 
 
@@ -37,11 +38,13 @@ def start_plugin(_type, module, file_path=None):
         file_path = os.getenv('CONFIG_PATH')
     else:
         file_path = file_path
+
     if file_path is not None:
         config = parse_config(file_path)
         plugin_instance = load_plugin(_type, module, config)
     else:
         plugin_instance = load_plugin(_type, module)
+
     return plugin_instance
 
 
@@ -63,11 +66,14 @@ def retrieve_module_path(_type, module, config=None):
     try:
         if config is not None and 'module.path' in config:
             module_path = f'{config["module.path"]}/{_type}_plugin.py'
+
         elif os.getenv('VIRTUAL_ENV') is not None:
-            module_path = f'{os.getenv("VIRTUAL_ENV")}/lib/python3.{sys.version_info[1]}' \
+            module_path = f'{os.getenv("VIRTUAL_ENV")}/lib/python3.{sys.version_info[1]}'\
                 f'/site-packages/osmosis_{module}_driver/{_type}_plugin.py'
+
         else:
             module_path = f'{site.getsitepackages()[0]}/osmosis_{module}_driver/{_type}_plugin.py'
+
         return module_path
     except Exception:
         raise ConfigError('You should provide a valid config.')

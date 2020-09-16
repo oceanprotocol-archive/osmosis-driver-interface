@@ -33,18 +33,20 @@ class Osmosis:
     @staticmethod
     def parse_url(url):
         """
-        Parse the url to decide wich driver should be loaded.
+        Parse the url to decide which driver should be loaded.
 
         :param url: str
         :return: Module name, str
         """
-        logger.info(f'Parsing url: {url}')
         if 'core.windows.net' in url:
-            logger.info('It is an azure url.')
+            logger.info(f'Loading azure driver, url={url}.')
             return 'azure'
         elif 's3://' in url:
-            logger.info('It is an aws url.')
+            logger.info(f'Loading aws driver, url={url}.')
             return 'aws'
+        elif 'ipfs://' in url:
+            logger.info(f'Loading IPFS driver, url={url}')
+            return 'ipfs'
         else:
-            logger.info('It is a on_premise url.')
+            logger.info(f'Loading on_premise driver, url={url}.')
             return 'on_premise'
