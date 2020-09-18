@@ -4,13 +4,38 @@
 import configparser
 import importlib.machinery
 import importlib.util
+import json
 import logging
 import os
 import site
 import sys
+from pathlib import Path
 
 from osmosis_driver_interface.constants import CONFIG_OPTION
 from osmosis_driver_interface.exceptions import ConfigError
+
+
+DEFAULT_PLUGIN_MAP = {
+    'core.windows.net': 'azure',
+    's3://': 'aws',
+    'ipfs://': 'ipfs'
+}
+
+
+def get_plugin_url_map():
+    plugin_map = os.getenv('OSMOSIS_PLUGIN_MAP')
+    if plugin_map:
+        _file = Path(plugin_map).expanduser().resolve()
+        if os.path.exists(_file):
+            with open(_file) as f:
+                plugin_map = json.load(f)
+        else:
+            plugin_map = json.loads(plugin_map)
+
+    if not plugin_map:
+        plugin_map = DEFAULT_PLUGIN_MAP
+
+    return plugin_map
 
 
 def parse_config(file_path):
@@ -32,15 +57,15 @@ def parse_config(file_path):
     return plugin_config
 
 
-def start_plugin(_type, module, file_path=None):
+def start_plugin(_type, module, config_file_path=None):
     """This function initialize the Osmosis plugin"""
     if os.getenv('CONFIG_PATH'):
-        file_path = os.getenv('CONFIG_PATH')
+        config_file_path = os.getenv('CONFIG_PATH')
     else:
-        file_path = file_path
+        config_file_path = config_file_path
 
-    if file_path is not None:
-        config = parse_config(file_path)
+    if config_file_path is not None:
+        config = parse_config(config_file_path)
         plugin_instance = load_plugin(_type, module, config)
     else:
         plugin_instance = load_plugin(_type, module)

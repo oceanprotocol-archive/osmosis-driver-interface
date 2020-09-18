@@ -11,7 +11,7 @@
 
 ---
 ## Table of Contents
-
+  - [How this works](#brief)
   - [Code style](#code-style)
   - [Testing](#testing)
   - [New Version](#new-version)
@@ -19,6 +19,27 @@
 
 ---
 
+## How this works
+This driver interface allows a data service provider such as [provider-py](https://github.com/oceanprotocol/provider-py) 
+to work with any cloud backend such as Azure, AWS by using a driver that implements the `osmosis` interface. 
+
+The `osmosis` interface is defined in `data_plugin.py` and `computing_plugin.py`. 
+After writing a new driver, add a mapping in `driver_map.json` to allow `osmosis` to identify urls that the 
+new driver is suitable to work with. 
+The `driver_map` must be defined in the environment variable `OSMOSIS_DRIVER_MAP` using one of these methods:
+* export OSMOSIS_DRIVER_MAP="/path/to/driver_map.json"
+* export OSMOSIS_DRIVER_MAP='{"core.windows.net": "azure", "ipfs://": "ipfs", "NewProtocol://": "driver-module-name"}'
+
+Load a driver:
+* Create Osmosis instance by giving a `url` and `config_file_path` (optional). Note that 
+config file is loaded from env var `CONFIG_PATH` if defined and takes precedence over `config_file_path`
+* If a config file is used and has a value for the `module.path` option, then 
+this path is used to load the osmosis driver regardless of the `url`
+* If no `module.path` is defined, the driver module is automatically determined from 
+the `url` using the `driver_map` as described above
+  * The driver module name should follow the convention of `osmosis_<module-name>_driver`
+
+  
 ## Code style
 
 The information about code style in python is documented in these two links [python-developer-guide](https://github.com/oceanprotocol/dev-ocean/blob/master/doc/development/python-developer-guide.md)
